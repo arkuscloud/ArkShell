@@ -1,0 +1,505 @@
+# AzureCLI install URL: https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli
+Get-ExecutionPolicy -List
+
+#Install Azure AD Module
+
+Install-Module -Name AzureAD
+
+<#
+.<Description>
+<
+AzureCLI install URL: https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli
+>
+#>
+
+
+**********************
+Windows PowerShell transcript start
+Start time: 20211105214911
+Username: CAMPACTION\Solo
+RunAs User: CAMPACTION\Solo
+Configuration Name: 
+Machine: CAMPACTION (Microsoft Windows NT 10.0.19043.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Process ID: 14320
+PSVersion: 5.1.19041.1237
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.1237
+BuildVersion: 10.0.19041.1237
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is C:\Users\Solo\OneDrive - arkuscloud\Documents\PowerShell_transcript.CAMPACTION.zPsLSxpR.20211105214911.txt
+PS C:\WINDOWS\system32> Install-Module -Name AzureAD
+Untrusted repository
+You are installing the modules from an untrusted repository. If you trust this repository, change its InstallationPolicy value by running the Set-PSRepository cmdlet. Are you sure you want to install the modules from 'PSGallery'?
+&Yes  Yes to &All  &No  No to A&ll  &Suspend
+A
+PS C:\WINDOWS\system32> Connect-AzureAD -AccountId solan@arkuscloud.io
+
+Account             Environment TenantId                             TenantDomain  AccountType
+-------             ----------- --------                             ------------  -----------
+solan@arkuscloud.io AzureCloud  YourTenantID arkuscloud.io User
+
+
+PS C:\WINDOWS\system32> $PasswordProfile = New-Object -TypeName Microsoft.Open.AzureAD.Model.PasswordProfile
+PS C:\WINDOWS\system32> $PasswordProfile.Password = "YourPassword"
+PS C:\WINDOWS\system32> $PasswordProfile.EnforceChangePasswordPolicy = $true
+PS C:\WINDOWS\system32> New-AzureADUser -DisplayName "Bootsy Rawlings" -PasswordProfile $PasswordProfile -UserPrincipalName "brawlings@arkuscloud.io" -AccountEnabled $true
+>> TerminatingError(New-AzureADUser): "Error occurred while executing NewUser 
+Code: Request_BadRequest
+Message: Property mailNickname value is required but is empty or missing.
+RequestId: 0a499d7d-87c8-4f9f-b2a7-23b90f93c120
+DateTimeStamp: Sat, 06 Nov 2021 02:00:26 GMT
+Details: PropertyName  - mailNickname, PropertyErrorCode  - PropertyRequired
+HttpStatusCode: BadRequest
+HttpStatusDescription: Bad Request
+HttpResponseStatus: Completed
+"
+New-AzureADUser : Error occurred while executing NewUser 
+Code: Request_BadRequest
+Message: Property mailNickname value is required but is empty or missing.
+RequestId: 0a499d7d-87c8-4f9f-b2a7-23b90f93c120
+DateTimeStamp: Sat, 06 Nov 2021 02:00:26 GMT
+Details: PropertyName  - mailNickname, PropertyErrorCode  - PropertyRequired
+HttpStatusCode: BadRequest
+HttpStatusDescription: Bad Request
+HttpResponseStatus: Completed
+
+At line:1 char:1
++ New-AzureADUser -DisplayName "Bootsy Rawlings" -PasswordProfile $Pass ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [New-AzureADUser], ApiException
+    + FullyQualifiedErrorId : Microsoft.Open.AzureAD16.Client.ApiException,Microsoft.Open.AzureAD16.PowerShell.NewUser
+New-AzureADUser : Error occurred while executing NewUser
+Code: Request_BadRequest
+Message: Property mailNickname value is required but is empty or missing.
+RequestId: 0a499d7d-87c8-4f9f-b2a7-23b90f93c120
+DateTimeStamp: Sat, 06 Nov 2021 02:00:26 GMT
+Details: PropertyName  - mailNickname, PropertyErrorCode  - PropertyRequired
+HttpStatusCode: BadRequest
+HttpStatusDescription: Bad Request
+HttpResponseStatus: Completed
+
+At line:1 char:1
++ New-AzureADUser -DisplayName "Bootsy Rawlings" -PasswordProfile $Pass ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [New-AzureADUser], ApiException
+    + FullyQualifiedErrorId : Microsoft.Open.AzureAD16.Client.ApiException,Microsoft.Open.AzureAD16.PowerShell.NewUser
+
+PS C:\WINDOWS\system32> New-AzureADUser -DisplayName "Bootsy Rawlings" -PasswordProfile $PasswordProfile -UserPrincipalName "brawlings@arkuscloud.io" -AccountEnabled $true -MailNickName "Bootsy Rawlings"
+>> TerminatingError(New-AzureADUser): "Error occurred while executing NewUser 
+Code: Request_BadRequest
+Message: Invalid value specified for property 'mailNickname' of resource 'User'.
+RequestId: ba812e14-6c8b-4267-b17d-98262f45b59a
+DateTimeStamp: Sat, 06 Nov 2021 02:01:42 GMT
+Details: PropertyName  - mailNickname, PropertyErrorCode  - InvalidValue
+HttpStatusCode: BadRequest
+HttpStatusDescription: Bad Request
+HttpResponseStatus: Completed
+"
+New-AzureADUser : Error occurred while executing NewUser 
+Code: Request_BadRequest
+Message: Invalid value specified for property 'mailNickname' of resource 'User'.
+RequestId: ba812e14-6c8b-4267-b17d-98262f45b59a
+DateTimeStamp: Sat, 06 Nov 2021 02:01:42 GMT
+Details: PropertyName  - mailNickname, PropertyErrorCode  - InvalidValue
+HttpStatusCode: BadRequest
+HttpStatusDescription: Bad Request
+HttpResponseStatus: Completed
+
+At line:1 char:1
++ New-AzureADUser -DisplayName "Bootsy Rawlings" -PasswordProfile $Pass ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [New-AzureADUser], ApiException
+    + FullyQualifiedErrorId : Microsoft.Open.AzureAD16.Client.ApiException,Microsoft.Open.AzureAD16.PowerShell.NewUser
+New-AzureADUser : Error occurred while executing NewUser
+Code: Request_BadRequest
+Message: Invalid value specified for property 'mailNickname' of resource 'User'.
+RequestId: ba812e14-6c8b-4267-b17d-98262f45b59a
+DateTimeStamp: Sat, 06 Nov 2021 02:01:42 GMT
+Details: PropertyName  - mailNickname, PropertyErrorCode  - InvalidValue
+HttpStatusCode: BadRequest
+HttpStatusDescription: Bad Request
+HttpResponseStatus: Completed
+
+At line:1 char:1
++ New-AzureADUser -DisplayName "Bootsy Rawlings" -PasswordProfile $Pass ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [New-AzureADUser], ApiException
+    + FullyQualifiedErrorId : Microsoft.Open.AzureAD16.Client.ApiException,Microsoft.Open.AzureAD16.PowerShell.NewUser
+
+PS C:\WINDOWS\system32> New-AzureADUser -DisplayName "Bootsy Rawlings" -PasswordProfile $PasswordProfile -UserPrincipalName "brawlings@arkuscloud.io" -AccountEnabled $true -MailNickName "BRawlings"
+
+ObjectId                             DisplayName     UserPrincipalName       UserType
+--------                             -----------     -----------------       --------
+aab84950-1e8f-4c59-8903-632f9be37155 Bootsy Rawlings brawlings@arkuscloud.io Member
+
+
+PS C:\WINDOWS\system32> New-AzureADGroup -DisplayName "ArkusRetro" -MailEnabled $True -SecurityEnabled $false -MailNickName "ArkusRetro"
+>> TerminatingError(New-AzureADGroup): "Error occurred while executing NewGroup 
+Code: Request_BadRequest
+Message: Cannot Create a mail-enabled security groups and or distribution list.
+RequestId: a6b06eaf-bdc4-4d25-83b2-7ee026790879
+DateTimeStamp: Sat, 06 Nov 2021 02:22:39 GMT
+HttpStatusCode: BadRequest
+HttpStatusDescription: Bad Request
+HttpResponseStatus: Completed
+"
+New-AzureADGroup : Error occurred while executing NewGroup 
+Code: Request_BadRequest
+Message: Cannot Create a mail-enabled security groups and or distribution list.
+RequestId: a6b06eaf-bdc4-4d25-83b2-7ee026790879
+DateTimeStamp: Sat, 06 Nov 2021 02:22:39 GMT
+HttpStatusCode: BadRequest
+HttpStatusDescription: Bad Request
+HttpResponseStatus: Completed
+
+At line:1 char:1
++ New-AzureADGroup -DisplayName "ArkusRetro" -MailEnabled $True -Securi ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [New-AzureADGroup], ApiException
+    + FullyQualifiedErrorId : Microsoft.Open.AzureAD16.Client.ApiException,Microsoft.Open.AzureAD16.PowerShell.NewGroup
+New-AzureADGroup : Error occurred while executing NewGroup
+Code: Request_BadRequest
+Message: Cannot Create a mail-enabled security groups and or distribution list.
+RequestId: a6b06eaf-bdc4-4d25-83b2-7ee026790879
+DateTimeStamp: Sat, 06 Nov 2021 02:22:39 GMT
+HttpStatusCode: BadRequest
+HttpStatusDescription: Bad Request
+HttpResponseStatus: Completed
+
+At line:1 char:1
++ New-AzureADGroup -DisplayName "ArkusRetro" -MailEnabled $True -Securi ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [New-AzureADGroup], ApiException
+    + FullyQualifiedErrorId : Microsoft.Open.AzureAD16.Client.ApiException,Microsoft.Open.AzureAD16.PowerShell.NewGroup
+
+PS C:\WINDOWS\system32> help New-AzureADGroup -Examples
+
+NAME
+    New-AzureADGroup
+
+SYNOPSIS
+    Creates a group.
+
+
+    Example 1: Create a group
+
+    PS C:\>New-AzureADGroup -DisplayName "My new group" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
+
+    ObjectId                             DisplayName  Description
+    --------                             -----------  -----------
+    11fa5e1e-737c-40c5-835e-416ae3959606 My new group
+PS C:\WINDOWS\system32> New-AzureADGroup -DisplayName "ArkusDemo" -MailEnabled $Fale -SecurityEnabled $True -MailNickName "ArkusDemo"
+>> TerminatingError(New-AzureADGroup): "Error occurred while executing NewGroup 
+Code: Request_BadRequest
+Message: A value is required for property 'mailEnabled' of resource 'Group'.
+RequestId: eeddc5f4-bc5e-42a4-9bb7-adc7a02ac706
+DateTimeStamp: Sat, 06 Nov 2021 02:23:56 GMT
+HttpStatusCode: BadRequest
+HttpStatusDescription: Bad Request
+HttpResponseStatus: Completed
+"
+New-AzureADGroup : Error occurred while executing NewGroup 
+Code: Request_BadRequest
+Message: A value is required for property 'mailEnabled' of resource 'Group'.
+RequestId: eeddc5f4-bc5e-42a4-9bb7-adc7a02ac706
+DateTimeStamp: Sat, 06 Nov 2021 02:23:56 GMT
+HttpStatusCode: BadRequest
+HttpStatusDescription: Bad Request
+HttpResponseStatus: Completed
+
+At line:1 char:1
++ New-AzureADGroup -DisplayName "ArkusDemo" -MailEnabled $Fale -Securit ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [New-AzureADGroup], ApiException
+    + FullyQualifiedErrorId : Microsoft.Open.AzureAD16.Client.ApiException,Microsoft.Open.AzureAD16.PowerShell.NewGroup
+New-AzureADGroup : Error occurred while executing NewGroup
+Code: Request_BadRequest
+Message: A value is required for property 'mailEnabled' of resource 'Group'.
+RequestId: eeddc5f4-bc5e-42a4-9bb7-adc7a02ac706
+DateTimeStamp: Sat, 06 Nov 2021 02:23:56 GMT
+HttpStatusCode: BadRequest
+HttpStatusDescription: Bad Request
+HttpResponseStatus: Completed
+
+At line:1 char:1
++ New-AzureADGroup -DisplayName "ArkusDemo" -MailEnabled $Fale -Securit ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [New-AzureADGroup], ApiException
+    + FullyQualifiedErrorId : Microsoft.Open.AzureAD16.Client.ApiException,Microsoft.Open.AzureAD16.PowerShell.NewGroup
+
+PS C:\WINDOWS\system32> New-AzureADGroup -DisplayName "ArkusDemo" -MailEnabled $False -SecurityEnabled $True -MailNickName "ArkusDemo"
+
+ObjectId                             DisplayName Description
+--------                             ----------- -----------
+32ebeea2-ef98-4dd5-8521-9af1ac3bf5a3 ArkusDemo
+
+
+PS C:\WINDOWS\system32> cls
+PS C:\WINDOWS\system32> Get-AzureADUser -All
+>> TerminatingError(Get-AzureADUser): "Missing an argument for parameter 'All'. Specify a parameter of type 'System.Nullable`1[System.Boolean]' and try again."
+Get-AzureADUser : Missing an argument for parameter 'All'. Specify a parameter of type 
+'System.Nullable`1[System.Boolean]' and try again.
+At line:1 char:17
++ Get-AzureADUser -All
++                 ~~~~
+    + CategoryInfo          : InvalidArgument: (:) [Get-AzureADUser], ParameterBindingException
+    + FullyQualifiedErrorId : MissingArgument,Microsoft.Open.AzureAD16.PowerShell.GetUser
+Get-AzureADUser : Missing an argument for parameter 'All'. Specify a parameter of type 'System.Nullable`1[System.Boolean]' and try again.
+At line:1 char:17
++ Get-AzureADUser -All
++                 ~~~~
+    + CategoryInfo          : InvalidArgument: (:) [Get-AzureADUser], ParameterBindingException
+    + FullyQualifiedErrorId : MissingArgument,Microsoft.Open.AzureAD16.PowerShell.GetUser
+
+PS C:\WINDOWS\system32> Get-AzureADUser -All *
+>> TerminatingError(Get-AzureADUser): "Cannot convert 'System.String' to the type 'System.Nullable`1[System.Boolean]' required by parameter 'All'. "
+Get-AzureADUser : Cannot convert 'System.String' to the type 'System.Nullable`1[System.Boolean]' required by parameter 
+'All'. 
+At line:1 char:22
++ Get-AzureADUser -All *
++                      ~
+    + CategoryInfo          : InvalidArgument: (:) [Get-AzureADUser], ParameterBindingException
+    + FullyQualifiedErrorId : CannotConvertArgument,Microsoft.Open.AzureAD16.PowerShell.GetUser
+Get-AzureADUser : Cannot convert 'System.String' to the type 'System.Nullable`1[System.Boolean]' required by parameter 'All'.
+At line:1 char:22
++ Get-AzureADUser -All *
++                      ~
+    + CategoryInfo          : InvalidArgument: (:) [Get-AzureADUser], ParameterBindingException
+    + FullyQualifiedErrorId : CannotConvertArgument,Microsoft.Open.AzureAD16.PowerShell.GetUser
+
+PS C:\WINDOWS\system32> Get-AzureADUser 
+
+ObjectId                             DisplayName     UserPrincipalName              UserType
+--------                             -----------     -----------------              --------
+aab84950-1e8f-4c59-8903-632f9be37155 Bootsy Rawlings brawlings@arkuscloud.io        Member
+4b45de90-63cc-4cfb-b814-b8f2875dc69a Bruce Leroy     sol@arkuscloud.onmicrosoft.com Member
+3e996785-a16f-4f9a-a08c-035afe93e57b Solan White     solan@arkuscloud.io            Member
+
+
+PS C:\WINDOWS\system32> Get-AzureADUser | Select-Object -Property displayname, objective
+
+DisplayName     objective
+-----------     ---------
+Bootsy Rawlings
+Bruce Leroy
+Solan White
+
+
+PS C:\WINDOWS\system32> Get-AzureADUser | Select-Object -Property displayname, objectid
+
+DisplayName     ObjectId
+-----------     --------
+Bootsy Rawlings aab84950-1e8f-4c59-8903-632f9be37155
+Bruce Leroy     4b45de90-63cc-4cfb-b814-b8f2875dc69a
+Solan White     3e996785-a16f-4f9a-a08c-035afe93e57b
+
+
+PS C:\WINDOWS\system32> Get-AzureADUser -ObjectId solan@arkuscloud.io
+
+ObjectId                             DisplayName UserPrincipalName   UserType
+--------                             ----------- -----------------   --------
+3e996785-a16f-4f9a-a08c-035afe93e57b Solan White solan@arkuscloud.io Member
+
+
+PS C:\WINDOWS\system32> (Get-AzureADUser -ObjectId solan@arkuscloud.io).objectid
+3e996785-a16f-4f9a-a08c-035afe93e57b
+PS C:\WINDOWS\system32> Get-AzureADGroup
+
+ObjectId                             DisplayName Description
+--------                             ----------- -----------
+076acc9c-dcaf-4dc5-9a71-cab01b68c261 All Company This is the default group for everyone in the network
+2a26cef9-b2f3-45cd-9eb9-e6468bf6c9a6 ArkusDemo   ArkusDemo
+32ebeea2-ef98-4dd5-8521-9af1ac3bf5a3 ArkusDemo
+dfad0848-6edd-48f0-aa71-b92b84032298 Projects    Projects
+e4b9b00f-0d01-47cf-aee1-5c4c026e0d2b Playbook    Playbook
+
+
+PS C:\WINDOWS\system32> help Remove-AzureADGroup example
+>> TerminatingError(help): "A positional parameter cannot be found that accepts argument 'example'."
+help : A positional parameter cannot be found that accepts argument 'example'.
+At line:1 char:1
++ help Remove-AzureADGroup example
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [help], ParameterBindingException
+    + FullyQualifiedErrorId : PositionalParameterNotFound,help
+help : A positional parameter cannot be found that accepts argument 'example'.
+At line:1 char:1
++ help Remove-AzureADGroup example
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [help], ParameterBindingException
+    + FullyQualifiedErrorId : PositionalParameterNotFound,help
+
+PS C:\WINDOWS\system32> help Remove-AzureADGroup -Examples
+
+NAME
+    Remove-AzureADGroup
+
+SYNOPSIS
+    Removes a group.
+
+
+    Example 1: Remove a group
+
+    PS C:\>Remove-AzureADGroup -ObjectId "11fa5e1e-737c-40c5-835e-416ae3959606"
+
+    This command removes the specified group from Azure AD.
+PS C:\WINDOWS\system32> Remove-AzureADGroup -ObjectId 32ebeea2-ef98-4dd5-8521-9af1ac3bf5a3
+PS C:\WINDOWS\system32> Get-AzureADGroup
+
+ObjectId                             DisplayName Description
+--------                             ----------- -----------
+076acc9c-dcaf-4dc5-9a71-cab01b68c261 All Company This is the default group for everyone in the network
+2a26cef9-b2f3-45cd-9eb9-e6468bf6c9a6 ArkusDemo   ArkusDemo
+dfad0848-6edd-48f0-aa71-b92b84032298 Projects    Projects
+e4b9b00f-0d01-47cf-aee1-5c4c026e0d2b Playbook    Playbook
+
+
+PS C:\WINDOWS\system32> New-AzureADGroup -Description "ArkShell" -DisplayName "ArkShell" -MailEnabled $false -SecurityEnabled $true -MailNickName "ArkShell"
+
+ObjectId                             DisplayName Description
+--------                             ----------- -----------
+ed1f1090-e3ea-4378-9152-62a3f4d7f4ee ArkShell    ArkShell
+
+
+PS C:\WINDOWS\system32> Add-AzureADGroupMember -ObjectId 3e996785-a16f-4f9a-a08c-035afe93e57b -RefObjectId ed1f1090-e3ea-4378-9152-62a3f4d7f4ee
+>> TerminatingError(Add-AzureADGroupMember): "Error occurred while executing AddGroupMember 
+Code: Request_ResourceNotFound
+Message: Resource '3e996785-a16f-4f9a-a08c-035afe93e57b' does not exist or one of its queried reference-property objects are not present.
+RequestId: 0f9cd135-fd6b-4221-a501-76ccf32eab9a
+DateTimeStamp: Sat, 06 Nov 2021 02:32:52 GMT
+HttpStatusCode: NotFound
+HttpStatusDescription: Not Found
+HttpResponseStatus: Completed
+"
+Add-AzureADGroupMember : Error occurred while executing AddGroupMember 
+Code: Request_ResourceNotFound
+Message: Resource '3e996785-a16f-4f9a-a08c-035afe93e57b' does not exist or one of its queried reference-property 
+objects are not present.
+RequestId: 0f9cd135-fd6b-4221-a501-76ccf32eab9a
+DateTimeStamp: Sat, 06 Nov 2021 02:32:52 GMT
+HttpStatusCode: NotFound
+HttpStatusDescription: Not Found
+HttpResponseStatus: Completed
+
+At line:1 char:1
++ Add-AzureADGroupMember -ObjectId 3e996785-a16f-4f9a-a08c-035afe93e57b ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Add-AzureADGroupMember], ApiException
+    + FullyQualifiedErrorId : 
+Microsoft.Open.AzureAD16.Client.ApiException,Microsoft.Open.AzureAD16.PowerShell.AddGroupMember
+Add-AzureADGroupMember : Error occurred while executing AddGroupMember
+Code: Request_ResourceNotFound
+Message: Resource '3e996785-a16f-4f9a-a08c-035afe93e57b' does not exist or one of its queried reference-property objects are not present.
+RequestId: 0f9cd135-fd6b-4221-a501-76ccf32eab9a
+DateTimeStamp: Sat, 06 Nov 2021 02:32:52 GMT
+HttpStatusCode: NotFound
+HttpStatusDescription: Not Found
+HttpResponseStatus: Completed
+
+At line:1 char:1
++ Add-AzureADGroupMember -ObjectId 3e996785-a16f-4f9a-a08c-035afe93e57b ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Add-AzureADGroupMember], ApiException
+    + FullyQualifiedErrorId : Microsoft.Open.AzureAD16.Client.ApiException,Microsoft.Open.AzureAD16.PowerShell.AddGroupMember
+
+PS C:\WINDOWS\system32> Add-AzureADGroupMember -ObjectId "3e996785-a16f-4f9a-a08c-035afe93e57b" -RefObjectId "ed1f1090-e3ea-4378-9152-62a3f4d7f4ee"
+>> TerminatingError(Add-AzureADGroupMember): "Error occurred while executing AddGroupMember 
+Code: Request_ResourceNotFound
+Message: Resource '3e996785-a16f-4f9a-a08c-035afe93e57b' does not exist or one of its queried reference-property objects are not present.
+RequestId: 2bd714f4-e27e-4444-be4f-347ec141c8e9
+DateTimeStamp: Sat, 06 Nov 2021 02:33:14 GMT
+HttpStatusCode: NotFound
+HttpStatusDescription: Not Found
+HttpResponseStatus: Completed
+"
+Add-AzureADGroupMember : Error occurred while executing AddGroupMember 
+Code: Request_ResourceNotFound
+Message: Resource '3e996785-a16f-4f9a-a08c-035afe93e57b' does not exist or one of its queried reference-property 
+objects are not present.
+RequestId: 2bd714f4-e27e-4444-be4f-347ec141c8e9
+DateTimeStamp: Sat, 06 Nov 2021 02:33:14 GMT
+HttpStatusCode: NotFound
+HttpStatusDescription: Not Found
+HttpResponseStatus: Completed
+
+At line:1 char:1
++ Add-AzureADGroupMember -ObjectId "3e996785-a16f-4f9a-a08c-035afe93e57 ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Add-AzureADGroupMember], ApiException
+    + FullyQualifiedErrorId : 
+Microsoft.Open.AzureAD16.Client.ApiException,Microsoft.Open.AzureAD16.PowerShell.AddGroupMember
+Add-AzureADGroupMember : Error occurred while executing AddGroupMember
+Code: Request_ResourceNotFound
+Message: Resource '3e996785-a16f-4f9a-a08c-035afe93e57b' does not exist or one of its queried reference-property objects are not present.
+RequestId: 2bd714f4-e27e-4444-be4f-347ec141c8e9
+DateTimeStamp: Sat, 06 Nov 2021 02:33:14 GMT
+HttpStatusCode: NotFound
+HttpStatusDescription: Not Found
+HttpResponseStatus: Completed
+
+At line:1 char:1
++ Add-AzureADGroupMember -ObjectId "3e996785-a16f-4f9a-a08c-035afe93e57 ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Add-AzureADGroupMember], ApiException
+    + FullyQualifiedErrorId : Microsoft.Open.AzureAD16.Client.ApiException,Microsoft.Open.AzureAD16.PowerShell.AddGroupMember
+
+PS C:\WINDOWS\system32> Add-AzureADGroupMember -ObjectId "4b45de90-63cc-4cfb-b814-b8f2875dc69a" -RefObjectId "ed1f1090-e3ea-4378-9152-62a3f4d7f4ee"
+>> TerminatingError(Add-AzureADGroupMember): "Error occurred while executing AddGroupMember 
+Code: Request_ResourceNotFound
+Message: Resource '4b45de90-63cc-4cfb-b814-b8f2875dc69a' does not exist or one of its queried reference-property objects are not present.
+RequestId: a5a2b8d2-d212-491b-a53f-b3f32949a85d
+DateTimeStamp: Sat, 06 Nov 2021 02:34:05 GMT
+HttpStatusCode: NotFound
+HttpStatusDescription: Not Found
+HttpResponseStatus: Completed
+"
+Add-AzureADGroupMember : Error occurred while executing AddGroupMember 
+Code: Request_ResourceNotFound
+Message: Resource '4b45de90-63cc-4cfb-b814-b8f2875dc69a' does not exist or one of its queried reference-property 
+objects are not present.
+RequestId: a5a2b8d2-d212-491b-a53f-b3f32949a85d
+DateTimeStamp: Sat, 06 Nov 2021 02:34:05 GMT
+HttpStatusCode: NotFound
+HttpStatusDescription: Not Found
+HttpResponseStatus: Completed
+
+At line:1 char:1
++ Add-AzureADGroupMember -ObjectId "4b45de90-63cc-4cfb-b814-b8f2875dc69 ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Add-AzureADGroupMember], ApiException
+    + FullyQualifiedErrorId : 
+Microsoft.Open.AzureAD16.Client.ApiException,Microsoft.Open.AzureAD16.PowerShell.AddGroupMember
+Add-AzureADGroupMember : Error occurred while executing AddGroupMember
+Code: Request_ResourceNotFound
+Message: Resource '4b45de90-63cc-4cfb-b814-b8f2875dc69a' does not exist or one of its queried reference-property objects are not present.
+RequestId: a5a2b8d2-d212-491b-a53f-b3f32949a85d
+DateTimeStamp: Sat, 06 Nov 2021 02:34:05 GMT
+HttpStatusCode: NotFound
+HttpStatusDescription: Not Found
+HttpResponseStatus: Completed
+
+At line:1 char:1
++ Add-AzureADGroupMember -ObjectId "4b45de90-63cc-4cfb-b814-b8f2875dc69 ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Add-AzureADGroupMember], ApiException
+    + FullyQualifiedErrorId : Microsoft.Open.AzureAD16.Client.ApiException,Microsoft.Open.AzureAD16.PowerShell.AddGroupMember
+
+PS C:\WINDOWS\system32> Add-AzureADGroupMember -ObjectId "ed1f1090-e3ea-4378-9152-62a3f4d7f4ee" -RefObjectId "4b45de90-63cc-4cfb-b814-b8f2875dc69a"
+PS C:\WINDOWS\system32> Get-AzureADGroupMember -ObjectId "ed1f1090-e3ea-4378-9152-62a3f4d7f4ee"
+
+ObjectId                             DisplayName UserPrincipalName              UserType
+--------                             ----------- -----------------              --------
+4b45de90-63cc-4cfb-b814-b8f2875dc69a Bruce Leroy sol@arkuscloud.onmicrosoft.com Member
+
+
+PS C:\WINDOWS\system32> Disconnect-AzureAD
+PS C:\WINDOWS\system32> Stop-Transcript
+**********************
+Windows PowerShell transcript end
+End time: 20211105223610
+**********************
