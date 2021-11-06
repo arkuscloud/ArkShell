@@ -12,7 +12,7 @@ AzureCLI install URL: https://docs.microsoft.com/en-us/cli/azure/install-azure-c
 >
 #>
 
-
+#100DaysOfCode - #100DaysOfPowerShell - Day 1 Transcript
 **********************
 Windows PowerShell transcript start
 Start time: 20211105214911
@@ -47,89 +47,6 @@ solan@arkuscloud.io AzureCloud  YourTenantID arkuscloud.io User
 PS C:\WINDOWS\system32> $PasswordProfile = New-Object -TypeName Microsoft.Open.AzureAD.Model.PasswordProfile
 PS C:\WINDOWS\system32> $PasswordProfile.Password = "YourPassword"
 PS C:\WINDOWS\system32> $PasswordProfile.EnforceChangePasswordPolicy = $true
-PS C:\WINDOWS\system32> New-AzureADUser -DisplayName "Bootsy Rawlings" -PasswordProfile $PasswordProfile -UserPrincipalName "brawlings@arkuscloud.io" -AccountEnabled $true
->> TerminatingError(New-AzureADUser): "Error occurred while executing NewUser 
-Code: Request_BadRequest
-Message: Property mailNickname value is required but is empty or missing.
-RequestId: 0a499d7d-87c8-4f9f-b2a7-23b90f93c120
-DateTimeStamp: Sat, 06 Nov 2021 02:00:26 GMT
-Details: PropertyName  - mailNickname, PropertyErrorCode  - PropertyRequired
-HttpStatusCode: BadRequest
-HttpStatusDescription: Bad Request
-HttpResponseStatus: Completed
-"
-New-AzureADUser : Error occurred while executing NewUser 
-Code: Request_BadRequest
-Message: Property mailNickname value is required but is empty or missing.
-RequestId: 0a499d7d-87c8-4f9f-b2a7-23b90f93c120
-DateTimeStamp: Sat, 06 Nov 2021 02:00:26 GMT
-Details: PropertyName  - mailNickname, PropertyErrorCode  - PropertyRequired
-HttpStatusCode: BadRequest
-HttpStatusDescription: Bad Request
-HttpResponseStatus: Completed
-
-At line:1 char:1
-+ New-AzureADUser -DisplayName "Bootsy Rawlings" -PasswordProfile $Pass ...
-+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (:) [New-AzureADUser], ApiException
-    + FullyQualifiedErrorId : Microsoft.Open.AzureAD16.Client.ApiException,Microsoft.Open.AzureAD16.PowerShell.NewUser
-New-AzureADUser : Error occurred while executing NewUser
-Code: Request_BadRequest
-Message: Property mailNickname value is required but is empty or missing.
-RequestId: 0a499d7d-87c8-4f9f-b2a7-23b90f93c120
-DateTimeStamp: Sat, 06 Nov 2021 02:00:26 GMT
-Details: PropertyName  - mailNickname, PropertyErrorCode  - PropertyRequired
-HttpStatusCode: BadRequest
-HttpStatusDescription: Bad Request
-HttpResponseStatus: Completed
-
-At line:1 char:1
-+ New-AzureADUser -DisplayName "Bootsy Rawlings" -PasswordProfile $Pass ...
-+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (:) [New-AzureADUser], ApiException
-    + FullyQualifiedErrorId : Microsoft.Open.AzureAD16.Client.ApiException,Microsoft.Open.AzureAD16.PowerShell.NewUser
-
-PS C:\WINDOWS\system32> New-AzureADUser -DisplayName "Bootsy Rawlings" -PasswordProfile $PasswordProfile -UserPrincipalName "brawlings@arkuscloud.io" -AccountEnabled $true -MailNickName "Bootsy Rawlings"
->> TerminatingError(New-AzureADUser): "Error occurred while executing NewUser 
-Code: Request_BadRequest
-Message: Invalid value specified for property 'mailNickname' of resource 'User'.
-RequestId: ba812e14-6c8b-4267-b17d-98262f45b59a
-DateTimeStamp: Sat, 06 Nov 2021 02:01:42 GMT
-Details: PropertyName  - mailNickname, PropertyErrorCode  - InvalidValue
-HttpStatusCode: BadRequest
-HttpStatusDescription: Bad Request
-HttpResponseStatus: Completed
-"
-New-AzureADUser : Error occurred while executing NewUser 
-Code: Request_BadRequest
-Message: Invalid value specified for property 'mailNickname' of resource 'User'.
-RequestId: ba812e14-6c8b-4267-b17d-98262f45b59a
-DateTimeStamp: Sat, 06 Nov 2021 02:01:42 GMT
-Details: PropertyName  - mailNickname, PropertyErrorCode  - InvalidValue
-HttpStatusCode: BadRequest
-HttpStatusDescription: Bad Request
-HttpResponseStatus: Completed
-
-At line:1 char:1
-+ New-AzureADUser -DisplayName "Bootsy Rawlings" -PasswordProfile $Pass ...
-+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (:) [New-AzureADUser], ApiException
-    + FullyQualifiedErrorId : Microsoft.Open.AzureAD16.Client.ApiException,Microsoft.Open.AzureAD16.PowerShell.NewUser
-New-AzureADUser : Error occurred while executing NewUser
-Code: Request_BadRequest
-Message: Invalid value specified for property 'mailNickname' of resource 'User'.
-RequestId: ba812e14-6c8b-4267-b17d-98262f45b59a
-DateTimeStamp: Sat, 06 Nov 2021 02:01:42 GMT
-Details: PropertyName  - mailNickname, PropertyErrorCode  - InvalidValue
-HttpStatusCode: BadRequest
-HttpStatusDescription: Bad Request
-HttpResponseStatus: Completed
-
-At line:1 char:1
-+ New-AzureADUser -DisplayName "Bootsy Rawlings" -PasswordProfile $Pass ...
-+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (:) [New-AzureADUser], ApiException
-    + FullyQualifiedErrorId : Microsoft.Open.AzureAD16.Client.ApiException,Microsoft.Open.AzureAD16.PowerShell.NewUser
 
 PS C:\WINDOWS\system32> New-AzureADUser -DisplayName "Bootsy Rawlings" -PasswordProfile $PasswordProfile -UserPrincipalName "brawlings@arkuscloud.io" -AccountEnabled $true -MailNickName "BRawlings"
 
@@ -137,45 +54,6 @@ ObjectId                             DisplayName     UserPrincipalName       Use
 --------                             -----------     -----------------       --------
 aab84950-1e8f-4c59-8903-632f9be37155 Bootsy Rawlings brawlings@arkuscloud.io Member
 
-
-PS C:\WINDOWS\system32> New-AzureADGroup -DisplayName "ArkusRetro" -MailEnabled $True -SecurityEnabled $false -MailNickName "ArkusRetro"
->> TerminatingError(New-AzureADGroup): "Error occurred while executing NewGroup 
-Code: Request_BadRequest
-Message: Cannot Create a mail-enabled security groups and or distribution list.
-RequestId: a6b06eaf-bdc4-4d25-83b2-7ee026790879
-DateTimeStamp: Sat, 06 Nov 2021 02:22:39 GMT
-HttpStatusCode: BadRequest
-HttpStatusDescription: Bad Request
-HttpResponseStatus: Completed
-"
-New-AzureADGroup : Error occurred while executing NewGroup 
-Code: Request_BadRequest
-Message: Cannot Create a mail-enabled security groups and or distribution list.
-RequestId: a6b06eaf-bdc4-4d25-83b2-7ee026790879
-DateTimeStamp: Sat, 06 Nov 2021 02:22:39 GMT
-HttpStatusCode: BadRequest
-HttpStatusDescription: Bad Request
-HttpResponseStatus: Completed
-
-At line:1 char:1
-+ New-AzureADGroup -DisplayName "ArkusRetro" -MailEnabled $True -Securi ...
-+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (:) [New-AzureADGroup], ApiException
-    + FullyQualifiedErrorId : Microsoft.Open.AzureAD16.Client.ApiException,Microsoft.Open.AzureAD16.PowerShell.NewGroup
-New-AzureADGroup : Error occurred while executing NewGroup
-Code: Request_BadRequest
-Message: Cannot Create a mail-enabled security groups and or distribution list.
-RequestId: a6b06eaf-bdc4-4d25-83b2-7ee026790879
-DateTimeStamp: Sat, 06 Nov 2021 02:22:39 GMT
-HttpStatusCode: BadRequest
-HttpStatusDescription: Bad Request
-HttpResponseStatus: Completed
-
-At line:1 char:1
-+ New-AzureADGroup -DisplayName "ArkusRetro" -MailEnabled $True -Securi ...
-+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (:) [New-AzureADGroup], ApiException
-    + FullyQualifiedErrorId : Microsoft.Open.AzureAD16.Client.ApiException,Microsoft.Open.AzureAD16.PowerShell.NewGroup
 
 PS C:\WINDOWS\system32> help New-AzureADGroup -Examples
 
@@ -193,44 +71,7 @@ SYNOPSIS
     ObjectId                             DisplayName  Description
     --------                             -----------  -----------
     11fa5e1e-737c-40c5-835e-416ae3959606 My new group
-PS C:\WINDOWS\system32> New-AzureADGroup -DisplayName "ArkusDemo" -MailEnabled $Fale -SecurityEnabled $True -MailNickName "ArkusDemo"
->> TerminatingError(New-AzureADGroup): "Error occurred while executing NewGroup 
-Code: Request_BadRequest
-Message: A value is required for property 'mailEnabled' of resource 'Group'.
-RequestId: eeddc5f4-bc5e-42a4-9bb7-adc7a02ac706
-DateTimeStamp: Sat, 06 Nov 2021 02:23:56 GMT
-HttpStatusCode: BadRequest
-HttpStatusDescription: Bad Request
-HttpResponseStatus: Completed
-"
-New-AzureADGroup : Error occurred while executing NewGroup 
-Code: Request_BadRequest
-Message: A value is required for property 'mailEnabled' of resource 'Group'.
-RequestId: eeddc5f4-bc5e-42a4-9bb7-adc7a02ac706
-DateTimeStamp: Sat, 06 Nov 2021 02:23:56 GMT
-HttpStatusCode: BadRequest
-HttpStatusDescription: Bad Request
-HttpResponseStatus: Completed
 
-At line:1 char:1
-+ New-AzureADGroup -DisplayName "ArkusDemo" -MailEnabled $Fale -Securit ...
-+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (:) [New-AzureADGroup], ApiException
-    + FullyQualifiedErrorId : Microsoft.Open.AzureAD16.Client.ApiException,Microsoft.Open.AzureAD16.PowerShell.NewGroup
-New-AzureADGroup : Error occurred while executing NewGroup
-Code: Request_BadRequest
-Message: A value is required for property 'mailEnabled' of resource 'Group'.
-RequestId: eeddc5f4-bc5e-42a4-9bb7-adc7a02ac706
-DateTimeStamp: Sat, 06 Nov 2021 02:23:56 GMT
-HttpStatusCode: BadRequest
-HttpStatusDescription: Bad Request
-HttpResponseStatus: Completed
-
-At line:1 char:1
-+ New-AzureADGroup -DisplayName "ArkusDemo" -MailEnabled $Fale -Securit ...
-+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (:) [New-AzureADGroup], ApiException
-    + FullyQualifiedErrorId : Microsoft.Open.AzureAD16.Client.ApiException,Microsoft.Open.AzureAD16.PowerShell.NewGroup
 
 PS C:\WINDOWS\system32> New-AzureADGroup -DisplayName "ArkusDemo" -MailEnabled $False -SecurityEnabled $True -MailNickName "ArkusDemo"
 
