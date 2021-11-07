@@ -15,7 +15,7 @@ Azure AD Bulk user creation from .csv file. Multiple users created at the same t
 File Name : ArkShell1_BatchUserCreate
 Author    : Solan White
 Version   : 1.6
-Date      : 11/06/21
+Date      : 11/07/21
 Requires  : PowerShell Version 3.0 or above
 Product   : Azure Active Directory
 
@@ -24,8 +24,10 @@ Product   : Azure Active Directory
 
 #>
 
+#Import users from .csv file, and store those users in a variable 
 $AzureADUsers = Import-Csv C:\Users\Solo\Documents\ArkShell\DevFiles\UserTemplate_ready.csv
 
+#Loop through each record in the .csv file to store details in new variables
 foreach ($User in $AzureADUsers)
 {
     $Firstname                = $User.firstname
@@ -43,6 +45,7 @@ foreach ($User in $AzureADUsers)
     $Department               = $User.department
     $Company                  = $User.company
 
+    #Create Azure Active Directory Users with variables created from .csv file
     New-AzureADUser -DisplayName $DisplayName `
                     -GivenName $Firstname `
                     -Surname $Lastname `
