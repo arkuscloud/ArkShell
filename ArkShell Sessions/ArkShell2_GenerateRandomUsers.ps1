@@ -6,10 +6,10 @@
 ###########################################################################
 
 .SYNOPSIS
-Bulk create Azure AD User Account.
+Create list of random users.
 
 .DESCRIPTION
-Azure AD Bulk user creation from .csv file. Multiple users created at the same time.
+NameIT #PowerShell module is available from the PSGallery. 
 
 .NOTES
 File Name : ArkShell2_GenerateRandomUsers
