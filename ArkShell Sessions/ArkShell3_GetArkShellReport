@@ -1,0 +1,49 @@
+<#
+-------------------------------------------------------------------------------
+-- Author       Solan White
+-- Created      11/08/21           
+-------------------------------------------------------------------------------
+#>
+
+<#
+    .SYNOPSIS
+        G
+
+    .DESCRIPTION
+        T
+        
+    .INPUTS
+        F
+    .EXAMPLE
+        
+#>
+
+function Get-ArkShellReport {
+    [CmdletBinding()]
+    param (
+        $ActiveUsrpath        = '',
+        $Transcriptdir  = "c:\Users\$env:username\.PS_TEMP\ArkShellReport\Transcript", 
+        $ErrorLog       = "c:\Users\$env:username\.PS_TEMP\ArkShellReport\Error\Get-Users_Error $( get-date -Format MM-dd-yy_HHmm-ss ).txt",
+        $MasterReport      = "c:\Users\$env:username\.PS_TEMP\ArkShellReport\.csv\.MasterReport\Master-Report $( get-date -Format MM-dd-yy_HHmm-ss ).csv",
+        $TempReport         = "c:\Users\$env:username\.PS_TEMP\ArkShellReport\.csv\Temp\Temp-Report $( get-date -Format MM-dd-yy_HHmm-ss ).csv"
+    )
+    BEGIN{
+        if(!(Test-Path -Path $Transcriptdir )){
+            New-Item -ItemType directory -Path $Transcriptdir
+            Write-Host "Transcript Directory created"
+        }
+        else{ 
+            Write-Host "Transcript Directory exists"
+        }
+        
+        Start-Transcript -Path "$Transcriptdir\ArkShellReport_Transcript $( get-date -Format MM-dd-yy_HHmm-ss ).txt" -Verbose
+    }
+    PROCESS{
+            $Act_Usr = Get-ADUser -Filter * -SearchBase $ActiveUsrpath -Properties Name, Title, Department, Manager, createTimeStamp, DistinguishedName, EmailAddress, LastLogonDate, Enabled, modifyTimeStamp, DisplayName, Office, OfficePhone, telephoneNumber, MobilePhone, PasswordLastSet, LastBadPasswordAttempt, Description 2>> $ErrorLog | Select-Object Name, Title, Department, Office, @{L='Manager';E={(get-aduser (get-aduser $_ -Properties manager).manager).name }}, createTimeStamp, LastLogonDate, modifyTimeStamp, OfficePhone, telephoneNumber, MobilePhone, PasswordLastSet, LastBadPasswordAttempt, DisplayName, Enabled, EmailAddress, @{l='OU';e={$_.DistinguishedName.split(',')[1].split('=')[1]}}, Description
+            $BAL | Export-Csv -Path $BALReport -Append 2>> $ErrorLog -NoTypeInformation
+    }
+    END {
+        Stop-Transcript
+    }
+}
+
