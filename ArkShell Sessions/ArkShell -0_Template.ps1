@@ -32,8 +32,21 @@ https://arkuscloud.io
 
 #>
 
-function Add-Extension{
-    param ([string]$Name,[string]$Extension = "txt")
-    $name = $name + "." + $extension
-    $name
+function Verb-Noun {
+    [CmdletBinding()]
+    param (
+        
+    )
+    
+    begin {
+        
+    }
+    
+    process {
+        
+    }
+    
+    end {
+        
+    }
 }
