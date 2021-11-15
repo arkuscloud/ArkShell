@@ -61,7 +61,7 @@ function New-PseudoPersona {
             Write-Host ".CSV Directory exists"
         }
         Start-Transcript -Path "$Transcriptdir\New-PseudoPersona_Transcript $( get-date -Format MM-dd-yy_HHmm-ss ).txt" -Verbose
-        $Template = @"
+        $Persona = @"
         FirstName = [person female first]
         LastName = [person female last]
         Street = [address]
@@ -81,7 +81,7 @@ function New-PseudoPersona {
         
         Install-Module -Name NameIT -Verbose -Confirm:$false 
 
-        $Results = Invoke-Generate $Template -Count $Count -AsPSObject
+        $Results = Invoke-Generate $Persona -Count $Count -AsPSObject
 
         $Results
 
