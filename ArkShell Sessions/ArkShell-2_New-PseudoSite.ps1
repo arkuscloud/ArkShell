@@ -75,7 +75,7 @@ function New-PseudoSite {
     
     end {
         
-        #Set-PSRepository -Name 'PSGallery' -InstallationPolicy Untrusted
+        Set-PSRepository -Name 'PSGallery' -InstallationPolicy Untrusted
         Stop-Transcript
     }
 }
