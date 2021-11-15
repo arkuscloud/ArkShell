@@ -16,7 +16,7 @@ Create one or more pseudo users with Active Directory user properties.
 
 
 .NOTES
-File Name : ArkShell #1 - New-PseudoPersona.ps1
+File Name : ArkShell [ 1 ] - New-PseudoPersona.ps1
 Author    : Solan White
 Requires  : PowerShell Version 3.0 or above
 
@@ -64,13 +64,12 @@ function New-PseudoPersona {
         $Template = @"
         FirstName = [person female first]
         LastName = [person female last]
-        DisplayName = $CustomData = @{}
         Street = [address]
         State = [state abbr]
         City = [city]
-        Zip = [numeric][numeric][numeric][numeric][numeric]
-        Telephone = [numeric][numeric][numeric]-[numeric][numeric][numeric]-[numeric][numeric][numeric][numeric]
-        Hire Date = [randomdate]
+        Zip = 2[numeric][numeric][numeric][numeric]
+        Telephone = 2[numeric][numeric]-7[numeric][numeric]-[numeric][numeric][numeric][numeric]
+        Hire Date = 04/1[numeric]/20[numeric][numeric]
         Password = #@#??@#?#?!#??*#?%
         Country = USA
         Company = Arkus Cloud
