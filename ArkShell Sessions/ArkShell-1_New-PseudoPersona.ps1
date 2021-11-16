@@ -62,17 +62,18 @@ function New-PseudoPersona {
         }
         Start-Transcript -Path "$Transcriptdir\New-PseudoPersona_Transcript $( get-date -Format MM-dd-yy_HHmm-ss ).txt" -Verbose
         $Persona = @"
-        FirstName = [person female first]
-        LastName = [person female last]
-        Street = [address]
-        State = [state abbr]
-        City = [city]
-        Zip = 2[numeric][numeric][numeric][numeric]
-        Telephone = 2[numeric][numeric]-7[numeric][numeric]-[numeric][numeric][numeric][numeric]
-        Hire Date = 04/1[numeric]/20[numeric][numeric]
-        Password = #@#??@#?#?!#??*#?%
-        Country = USA
-        Company = Arkus Cloud
+        FirstName   = [person female first]
+        LastName    = [person female last]
+        Street      = [address]
+        State       = [state abbr]
+        City        = [city]
+        Zip         = 2[numeric][numeric][numeric][numeric]
+        Telephone   = 2[numeric][numeric]-7[numeric][numeric]-[numeric][numeric][numeric][numeric]
+        Hire Date   = 04/1[numeric]/20[numeric][numeric]
+        Job         = [job]
+        Password    = #@#??@#?#?!#??*#?%
+        Country     = USA
+        Company     = Arkus Cloud
 "@
     }
     
