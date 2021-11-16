@@ -61,15 +61,15 @@ function New-PseudoCampus {
         }
         Start-Transcript -Path "$Transcriptdir\New-PseudoCampus_Transcript $( get-date -Format MM-dd-yy_HHmm-ss ).txt" -Verbose
         $Campus = @"
-        Charter = [state]-##?
-        P.O. Box. = 'PO Box #####'
-        Street = [address]
-        State = [state abbr]
-        City = [city]
-        Zip = 5[numeric][numeric][numeric][numeric]
-        Telephone = 301-9[numeric][numeric]-9[numeric][numeric][numeric]
-        Country = USA
-        POC = [person]
+        Charter     = [state]-##?
+        P.O. Box.   = 'PO Box #####'
+        Street      = [address]
+        State       = [state abbr]
+        City        = [city]
+        Zip         = 5[numeric][numeric][numeric][numeric]
+        Telephone   = 301-9[numeric][numeric]-9[numeric][numeric][numeric]
+        Country     = USA
+        POC         = [person]
 "@
         
     }
