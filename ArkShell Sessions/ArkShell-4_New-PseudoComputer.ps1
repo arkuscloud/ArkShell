@@ -61,18 +61,22 @@ function New-PseudoComputer {
         }
         Start-Transcript -Path "$Transcriptdir\New-PseudoComputer_Transcript $( get-date -Format MM-dd-yy_HHmm-ss ).txt" -Verbose
         $Computer = @"
-        ComputerName    = '[state abbr]-Optiplex-##-9##'
-        Description     = '[person]-System'
-        DeviceModel     = 'Optiplex-3#5#'
-        CPUName         = 'Intel([state abbr]) Core([numeric][alpha]) i#-97## CPU @ 3.##GHz'
-        OSCaption       = 'Microsoft Windows 1# Pro'
+        ComputerName    = [state abbr]-Optiplex-##-9##
+        Description     = [person] '[Desktop]'
+        DeviceModel     = Optiplex-3#5#
+        CPUName         = Intel([state abbr]) Core([numeric][alpha]) i#-97## CPU @ 3.##GHz
+        OSCaption       = Microsoft Windows 1# Pro
         OSVersion       = 2[numeric][numeric]9
+        GUID            = [guid]
+        Configured By   = [person]
 "@
-        
+        Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
+                
+        Install-Module -Name NameIT -Verbose -Confirm:$false 
     }
     
     process {
-        $Results = Invoke-Generate $Computer -Count $Count -AsPSObject | Select-Object ComputerName, Description, DeviceModel, CPUName, OSCaption, OSVersion
+        $Results = Invoke-Generate $Computer -Count $Count -AsPSObject | Select-Object ComputerName, Description, DeviceModel, CPUName, OSCaption, OSVersion, GUID, 'Configured By'
 
         $Results
 
@@ -83,6 +87,9 @@ function New-PseudoComputer {
     end {
         
         Set-PSRepository -Name 'PSGallery' -InstallationPolicy Untrusted
+
         Stop-Transcript
+
     }
+    
 }
