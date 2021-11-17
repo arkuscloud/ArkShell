@@ -39,28 +39,47 @@ function New-PseudoPersona {
     )
     
     begin {
+
         if(!(Test-Path -Path $Transcriptdir )){
+
             New-Item -ItemType directory -Path $Transcriptdir
+
             Write-Host "Transcript Directory created"
         }
         else{ 
+
             Write-Host "Transcript Directory exists"
+
         }
+
         if(!(Test-Path -Path $Errordir )){
+
             New-Item -ItemType directory -Path $Errordir
+
             Write-Host "Error Directory created"
+
         }
+
         else{ 
+
             Write-Host "Error Directory exists"
+
         }
+
         if(!(Test-Path -Path $CSVdir )){
+
             New-Item -ItemType directory -Path $CSVdir
+
             Write-Host ".CSV Directory created"
         }
+
         else{ 
+
             Write-Host ".CSV Directory exists"
+
         }
         Start-Transcript -Path "$Transcriptdir\New-PseudoPersona_Transcript $( get-date -Format MM-dd-yy_HHmm-ss ).txt" -Verbose
+
         $Persona = @"
         FirstName   = [person female first]
         LastName    = [person female last]
@@ -69,15 +88,18 @@ function New-PseudoPersona {
         City        = [city]
         Zip         = 2[numeric][numeric][numeric][numeric]
         Telephone   = 2[numeric][numeric]-7[numeric][numeric]-[numeric][numeric][numeric][numeric]
-        Hire Date   = 04/1[numeric]/20[numeric][numeric]
+        Hire Date   = [April]
+        Start Date  = [May]
         Job         = [job]
-        Password    = #@#??@#?#?!#??*#?%
+        Password    = #@#??^#?#?!#??*#?
         Country     = USA
         Company     = Arkus Cloud
+        Notes       = 'Probation over on [September]'
 "@
     }
     
     process {
+        
         Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
         
         Install-Module -Name NameIT -Verbose -Confirm:$false 
@@ -93,6 +115,8 @@ function New-PseudoPersona {
     end {
         
         Set-PSRepository -Name 'PSGallery' -InstallationPolicy Untrusted
+        
         Stop-Transcript
     }
+    
 }
