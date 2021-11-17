@@ -6,7 +6,7 @@
 ##########################################
 
 .SYNOPSIS
-Create one or more pseudo users with Active Directory user properties.
+Create one or more pseudo sites with Active Directory user properties.
 
 .DESCRIPTION
 
@@ -39,33 +39,59 @@ function New-PseudoSite {
     )
     
     begin {
+
         if(!(Test-Path -Path $Transcriptdir )){
+
             New-Item -ItemType directory -Path $Transcriptdir
+
             Write-Host "Transcript Directory created"
+
         }
+        
         else{ 
+
             Write-Host "Transcript Directory exists"
+
         }
+
         if(!(Test-Path -Path $Errordir )){
+
             New-Item -ItemType directory -Path $Errordir
+
             Write-Host "Error Directory created"
+
         }
+
         else{ 
+
             Write-Host "Error Directory exists"
+
         }
+
         if(!(Test-Path -Path $CSVdir )){
+
             New-Item -ItemType directory -Path $CSVdir
+
             Write-Host ".CSV Directory created"
+
         }
+
         else{ 
+
             Write-Host ".CSV Directory exists"
+
         }
+
         Start-Transcript -Path "$Transcriptdir\New-PseudoSite_Transcript $( get-date -Format MM-dd-yy_HHmm-ss ).txt" -Verbose
+        
+        Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
+        
+        Install-Module -Name NameIT -Verbose -Confirm:$false 
     }
     
     process {
 
-        $Results = Invoke-Generate  (New-NameItTemplate {[PSCustomObject]@{Address="";State="";zip=""}})  -Count $Count -AsPSObject
+        $Results = Invoke-Generate  (New-NameItTemplate {[PSCustomObject]@{Address="";State="";Zip=""}})  -Count $Count -AsPSObject
 
         $Results
 
@@ -76,6 +102,8 @@ function New-PseudoSite {
     end {
         
         Set-PSRepository -Name 'PSGallery' -InstallationPolicy Untrusted
+
         Stop-Transcript
     }
+    
 }
