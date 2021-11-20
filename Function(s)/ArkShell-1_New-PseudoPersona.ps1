@@ -31,6 +31,8 @@ function New-PseudoPersona {
         $Transcriptdir  = "c:\Users\$env:username\ArkShell_Files\New-PseudoPersona\Transcript", 
         $Errordir       = "c:\Users\$env:username\ArkShell_Files\New-PseudoPersona\Error",
         $CSVdir         = "c:\Users\$env:username\ArkShell_Files\New-PseudoPersona\.csv",
+        $UserDumpdir    = "c:\Users\$env:username\ArkShell_Files\UserDump",
+        $UserDumpFile   = "c:\Users\$env:username\ArkShell_Files\UserDump\NewUserOnboardDump-$( get-date -Format MM-dd-yy_HHmm-ss ).csv",
         $ErrorLog       = "c:\Users\$env:username\ArkShell_Files\New-PseudoPersona\Error\New-PseudoPersona_Error $( get-date -Format MM-dd-yy_HHmm-ss ).txt",
         $NewReport      = "c:\Users\$env:username\ArkShell_Files\New-PseudoPersona\.csv\New-PseudoPersona_Report $( get-date -Format MM-dd-yy_HHmm-ss ).csv",
         # NameIT -Count Parameter
@@ -78,6 +80,18 @@ function New-PseudoPersona {
             Write-Host ".CSV Directory exists"
 
         }
+        if(!(Test-Path -Path $UserDumpdir )){
+
+            New-Item -ItemType directory -Path $UserDumpdir
+
+            Write-Host "User Dump Directory created"
+        }
+
+        else{ 
+
+            Write-Host "User Dump Directory exists"
+
+        }
         Start-Transcript -Path "$Transcriptdir\New-PseudoPersona_Transcript $( get-date -Format MM-dd-yy_HHmm-ss ).txt" -Verbose
 
         $Persona = @"
@@ -109,6 +123,8 @@ function New-PseudoPersona {
         $Results
 
         $Results | Export-Csv -Path $NewReport -Append 2>> $ErrorLog -NoTypeInformation
+
+        $Results | Export-Csv -Path $UserDumpFile -Append 2>> $ErrorLog -NoTypeInformation
 
     }
     
