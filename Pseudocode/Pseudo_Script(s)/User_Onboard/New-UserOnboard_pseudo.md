@@ -1,24 +1,54 @@
 ## [ArkShell 5] New-UserOnboard Pseudocode
 
-X Check for new file
+:house: Check for new file
 
 Check directory for new user .csv file
 
     If there is a .csv file present
 
+        Collect file owner / last modified details
         
-        
+        Move file to Triage directory
+
         $Results = Import .csv file contents
 
         Make New PSCustomObject with column names to match file headers
 
-        Export Triage.csv file in 
+        Export LaunchFile_Date.csv file in Launch Directory
 
     Else
 
         Write-Verbose "No User File Present"
 
-X 
+Check Launch directory for Launch file
+
+    If there is a launchfile_date.csv file present
+
+        x
+
+
+:point_right: File Metadata - > PSCustomObject Syntax
+
+```PowerShell
+$a = get-acl 'Path\to\file.pdf'
+
+$b = Get-ChildItem 'Path\to\file.pdf'
+
+$c = [PSCustomObject]@{
+    
+}
+
+$c | Add-Member -MemberType NoteProperty -Name 'Owner' -Value $a.Owner
+$c | Add-Member -MemberType NoteProperty -Name 'Group' -Value $a.Group
+$c | Add-Member -MemberType NoteProperty -Name 'File Name' -Value $b.Name
+$c | Add-Member -MemberType NoteProperty -Name 'Created' -Value $b.CreationTime
+$c | Add-Member -MemberType NoteProperty -Name 'Modified' -Value $b.LastWriteTime
+
+```
+
+
+
+:point_right: Move file based on date condition
 
 ```powershell
 $Path = "C:\FromFTP";
