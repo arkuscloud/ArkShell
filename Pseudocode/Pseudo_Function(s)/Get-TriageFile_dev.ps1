@@ -37,6 +37,7 @@ function Get-TriageFile {
     
     [CmdletBinding()]
     param (
+        $UserDumpdir    = "c:\Users\$env:username\ArkShell_Files\UserDump",    
         $Triagedir      = "c:\Users\$env:username\ArkShell_Files\UserTriageZone",
         $Launchdir      = "c:\Users\$env:username\ArkShell_Files\UserLaunchPad",
         $Transcriptdir  = "c:\Users\$env:username\ArkShell_Files\Get-TriageFile\Transcript", 
@@ -89,7 +90,7 @@ function Get-TriageFile {
     }
     
     process {
-        $UserDumpdir    = "c:\Users\$env:username\ArkShell_Files\UserDump"
+        
         #Get UserDump File
         Get-ChildItem -Path $UserDumpdir | Where-Object { $_.LastWriteTime -ge $Today -and $_.LastWriteTime -lt $Today.AddDays(1) } | Move-Item -Destination $Triagedir;
 
