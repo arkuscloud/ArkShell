@@ -37,6 +37,7 @@ function Get-TriageFile {
     
     [CmdletBinding()]
     param (
+        $Triagedir      = "c:\Users\$env:username\ArkShell_Files\Get-TriageZone\Triage",
         $Launchdir      = "c:\Users\$env:username\ArkShell_Files\Get-TriageZone\Launch",
         $Transcriptdir  = "c:\Users\$env:username\ArkShell_Files\Get-TriageZone\Transcript", 
         $Errordir       = "c:\Users\$env:username\ArkShell_Files\Get-TriageZone\Error",
