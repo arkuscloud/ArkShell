@@ -37,12 +37,12 @@ function Get-LaunchFile {
     
     [CmdletBinding()]
     param (
-        $Launchdir      = "c:\Users\$env:username\ArkShell_Files\Get-LaunchPad\Launch",
-        $Transcriptdir  = "c:\Users\$env:username\ArkShell_Files\Get-LaunchPad\Transcript", 
-        $Errordir       = "c:\Users\$env:username\ArkShell_Files\Get-LaunchPad\Error",
-        $CSVdir         = "c:\Users\$env:username\ArkShell_Files\Get-LaunchPad\.csv",
-        $ErrorLog       = "c:\Users\$env:username\ArkShell_Files\Get-LaunchPad\Error\Get-LaunchPad_Error $( get-date -Format MM-dd-yy_HHmm-ss ).txt",
-        $NewReport      = "c:\Users\$env:username\ArkShell_Files\Get-LaunchPad\.csv\Get-LaunchPad_Report $( get-date -Format MM-dd-yy_HHmm-ss ).csv"
+        $Launchdir      = "c:\Users\$env:username\ArkShell_Files\Get-LaunchFile\Launch",
+        $Transcriptdir  = "c:\Users\$env:username\ArkShell_Files\Get-LaunchFile\Transcript", 
+        $Errordir       = "c:\Users\$env:username\ArkShell_Files\Get-LaunchFile\Error",
+        $CSVdir         = "c:\Users\$env:username\ArkShell_Files\Get-LaunchFile\.csv",
+        $ErrorLog       = "c:\Users\$env:username\ArkShell_Files\Get-LaunchFile\Error\Get-LaunchFile_Error $( get-date -Format MM-dd-yy_HHmm-ss ).txt",
+        $NewReport      = "c:\Users\$env:username\ArkShell_Files\Get-LaunchFile\.csv\Get-LaunchFile_Report $( get-date -Format MM-dd-yy_HHmm-ss ).csv"
     )
     
     begin {
